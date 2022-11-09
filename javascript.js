@@ -1,47 +1,60 @@
+let count = 0
 function getComputerChoice(){
-    return ["Rock", "Paper", "Scissors"][Math.floor(Math.random()*3)]
+    return ["Rock", "Paper", "Scissors"][Math.floor(Math.random()*3)];
 }
 
-function playRound(playerSelection, computerSelection){
+function playRound(e){
+    let playerSelection = 0;
+    computerSelection = getComputerChoice();
+    playerSelection = e.target.textContent
     if(playerSelection == computerSelection){
-        return "Its a tie"
+        div.textContent= "Its a tie";
+        return ;
     }
     switch (playerSelection){
         case "Rock":
             if (computerSelection == "Paper"){
-                return "You Lose! Paper beats Rock"}
+                count++;
+                div.textContent = "You Lose! Paper beats Rock";
+                return }
             else{
-                return "You Win! Rock breaks Scissors"
+                div.textContent = "You Win! Rock breaks Scissors"
+                return ;
             }
         case "Paper":
             if (computerSelection == "Scissors"){
-                return "You Lose! Scissors beats Papper"}
+                count++;
+                div.textContent= "You Lose! Scissors beats Papper"
+                return }
             else{
-                return "You Win! Paper covers Rock"
+                div.textContent= "You Win! Paper covers Rock"
+                return ;
             }
         case "Scissors":
             if (computerSelection == "Rock"){
-                return "You Lose! Rock beats Scissors"}
+                count++;
+                div.textContent = "You Lose! Rock beats Scissors";
+                return}
             else{
-                return "You Win! Scissors beats Paper"
+                div.textContent = "You Win! Scissors beats Paper";
+                return ;
             }
     }
     
 }
-function game(){
-    let score = 0;
-    for(let i=0; i<5; i++){
-        let answer = prompt("enter choice")
-        while( "Rock" !== answer && "Paper" !== answer && "Scissors" !== answer){
-            answer = prompt("enter choice")
-        }
-        answer = playRound(answer, getComputerChoice())
-        console.log(answer)
-        if(answer.slice(0,8) == "You Win!"){
-            console.log(1)
-            score++;
-        }
-    }
-    return score;
-}
-console.log(game())
+
+
+const div = document.querySelector("div");
+
+const Rock = document.querySelector("#Rock");
+Rock.addEventListener('click',playRound);
+console.log(Rock);
+const Paper =document.querySelector("#Paper");
+Paper.addEventListener('click',playRound);
+const Scissors = document.querySelector("#Scissors");
+Scissors.addEventListener('click', playRound);
+
+
+
+
+
